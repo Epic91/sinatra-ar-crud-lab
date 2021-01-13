@@ -28,15 +28,14 @@ class ApplicationController < Sinatra::Base
   post '/articles' do
     #insert code that extracts the form data from the params 
     @article = Article.create(params)
-    redirect '/articles/#{article.id}'
+    redirect "/articles/#{ @article.id }"
   end
 
   #show, this is a READ action
-  get '/articles/:id/edit' do
+  get "/articles/:id" do
     @article = Article.find(params[:id])
     erb :show
   end
-
   #edit, this is an UPDATE action
   get '/articles/:id/edit' do
     @article = Article.find(params[:id])
